@@ -1,4 +1,4 @@
-### Install packets
+### Install package
 pip install -r requirements.txt
 
 or since this requirements.txt have some unused packages,
