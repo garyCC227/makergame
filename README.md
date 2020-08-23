@@ -22,7 +22,7 @@ you can run the script to see any missed package, then install them one by one
  
  
  ### TODO: check this label example(labelling style: semantic segmentaiton)
- ![labelled imagge sample:](https://drive.google.com/file/d/1w5PtDGtcO6_nv_kktU0U69VBNWUaHSeX/view?usp=sharing) 
+ [labelled imagge sample:](https://drive.google.com/file/d/1w5PtDGtcO6_nv_kktU0U69VBNWUaHSeX/view?usp=sharing) 
  
 
  
