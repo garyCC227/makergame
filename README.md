@@ -21,7 +21,7 @@ you can run the script to see any missed package, then install them one by one
  
  
  
- ### TODO: check this label example(labelling style: semantic segmentaiton)
+ ## TODO: check this label example(labelling style: semantic segmentaiton)
  [labelled imagge sample:](https://drive.google.com/file/d/1w5PtDGtcO6_nv_kktU0U69VBNWUaHSeX/view?usp=sharing) 
  
  label json that labelbox return:
@@ -66,7 +66,10 @@ you can run the script to see any missed package, then install them one by one
         "View Label": "https://editor.labelbox.com?project=cke6dcg3wteme0777hbzs8mr9&label=cke6dtfgo00003b5s1tanhqk8"
     }
 ]
+
  ```
+ 
+ #### Quesiton: anyone know how to use this label in training? I am not familiar with segmentaion 
  
 
  
