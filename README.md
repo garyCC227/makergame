@@ -18,6 +18,14 @@ you can run the script to see any missed package, then install them one by one
  
  ### download dataset
  https://drive.google.com/file/d/1z8hylVmqbloiyQd18DG3NKOrvZNimALY/view?usp=sharing
+ 
+ 
+ 
+ ### TODO: check this label example(labelling style: semantic segmentaiton)
+ ![labelled imagge sample:](https://drive.google.com/file/d/1w5PtDGtcO6_nv_kktU0U69VBNWUaHSeX/view?usp=sharing) 
+ 
+
+ 
 
 
 
