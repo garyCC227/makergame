@@ -26,7 +26,7 @@ def save_image(ID, res):
     img = res.content
     in_memory_file = io.BytesIO(img)
     img = Image.open(in_memory_file)
-    img.save(f'../data/{ID}.jpg') #NOTE:   Naming convention - the image ID, you can check it for more detail in repot.xlsx
+    img.save(f'../sample_data/{ID}.jpg') #NOTE:   Naming convention - the image ID, you can check it for more detail in repot.xlsx
 
 def download_img(ID, coord):
     coord = re.sub("\s+", "", coord) #remove whitespace
