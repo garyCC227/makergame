@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken =
-  "pk.eyJ1IjoiZ2FyeWNjMjI3IiwiYSI6ImNrZDJyaWRxbDFnZGcycXF5dm8wcnptdjQifQ.Aw920Zjcv8rr6ewAj3oe1A--TODELETE";
+  "pk.eyJ1IjoiZ2FyeWNjMjI3IiwiYSI6ImNrZDJyaWRxbDFnZGcycXF5dm8wcnptdjQifQ.Aw920Zjcv8rr6ewAj3oe1A";
 
 class Map extends React.Component {
   constructor(props) {

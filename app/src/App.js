@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import HomePage from "./components/Home";
-import Sidebar from "./components/SideBar";
+import Sidebar from "./components/Sidebar";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
