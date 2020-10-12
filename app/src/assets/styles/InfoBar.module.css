@@ -1,0 +1,94 @@
+.infoBox {
+  width: 15%;
+  height: 100%;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  border-radius: 5px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid 1px #6b6a6a;
+}
+
+.pollinateInfo {
+  display: flex;
+  border-bottom: solid 1px #6b6a6a;
+  flex-wrap: wrap;
+}
+
+.title {
+  height: 120px;
+  background-color: burlywood;
+  display: flex;
+  justify-content: center;
+}
+
+.closeBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
+  width: 80%;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.closeBar h3 {
+  font-size: 15pt;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 150px;
+  opacity: 0.8;
+  margin: auto 0;
+  white-space: nowrap;
+}
+
+.intro {
+  display: flex;
+  height: 100px;
+  padding: 20px;
+}
+.detail {
+  display: flex;
+  padding: 0px 20px;
+}
+
+.place {
+  margin-left: 10px;
+}
+.place h4 {
+  font-weight: bold;
+}
+.place h5 {
+  font-weight: bold;
+}
+.place h6 {
+  font-weight: bold;
+  color: grey;
+  opacity: 0.9;
+}
+.place h7 {
+  font-size: 11pt;
+  font-weight: bold;
+}
+.place p {
+  font-size: 13pt;
+}
+
+.verified {
+  color: green;
+}
+
+.unverified {
+  color: red;
+}

@@ -1,0 +1,17 @@
+.container {
+  height: 50px;
+  width: 350px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  z-index: 10;
+  position: relative;
+  margin: 10px 0 0 10px;
+}
+
+.input {
+  width: 220px !important;
+  border: none;
+}

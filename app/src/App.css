@@ -1,5 +1,9 @@
 @import "~antd/dist/antd.css";
 
+body {
+  font-family: "Courier New", Courier, monospace;
+}
+
 .App {
   display: flex;
 }

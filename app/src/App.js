@@ -9,7 +9,7 @@ export default function App() {
   return (
     <Router>
       <div className="App">
-        <div className="side-bar">
+        <div className="side-bar" style={{ display: "none" }}>
           <Sidebar />
         </div>
 
