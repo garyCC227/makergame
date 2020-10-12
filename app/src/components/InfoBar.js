@@ -49,7 +49,7 @@ export default function InfoBar(props) {
             </p>
           </div>
         </div>
-        {/* w3w address */}
+        {/* w3w address1 */}
         <div className={style.detail}>
           <i className="fas fa-map-marked-alt w3-xlarge w3-text-red"></i>
           <div className={style.place}>
