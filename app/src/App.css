@@ -8,10 +8,6 @@ body {
   display: flex;
 }
 
-.side-bar {
-  flex: 1;
-}
-
 .content {
   flex-grow: 10;
   position: relative;

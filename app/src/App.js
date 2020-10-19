@@ -1,18 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import HomePage from "./components/Home";
 import Sidebar from "./components/Sidebar";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 export default function App() {
   return (
     <Router>
       <div className="App">
-        <div className="side-bar" style={{ display: "none" }}>
-          <Sidebar />
-        </div>
-
+        <Sidebar />
         <div className="content">
           <Switch>
             <Route path="/" component={HomePage} />

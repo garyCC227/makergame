@@ -15,7 +15,7 @@ class Map extends React.Component {
       lng: 77.6887,
       lat: 13.0194,
 
-      //test 2
+      // test 2
       // lat: 45.137451890638886,
       // lng: -68.13734351262877,
 
@@ -72,6 +72,13 @@ class Map extends React.Component {
           //add pop-up
           map.on("click", "communities", function (e) {
             const placeholder = document.getElementById("info");
+
+            //remove previous info bar, if info bar is opening
+            if (placeholder.innerHTML !== "") {
+              ReactDOM.unmountComponentAtNode(placeholder);
+            }
+
+            //add new info bar
             ReactDOM.render(<InfoBar features={e.features[0]} />, placeholder);
           });
 

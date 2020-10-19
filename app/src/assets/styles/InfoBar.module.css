@@ -15,18 +15,32 @@
 .row {
   display: flex;
   flex-direction: column;
-  border-bottom: solid 1px #6b6a6a;
 }
-
+.detailContainer {
+  position: relative;
+  width: 100%;
+}
 .pollinateInfo {
   display: flex;
   border-bottom: solid 1px #6b6a6a;
   flex-wrap: wrap;
+  /* justify-content: space-around; */
+  min-height: 200px;
+  /* position: relative; */
+}
+.editButton {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  width: 40px;
+  height: 30px;
 }
 
 .title {
   height: 120px;
-  background-color: burlywood;
+  /* background-color: burlywood; */
+  background-image: url("../tempUse.jpg");
+  background-size: auto;
   display: flex;
   justify-content: center;
 }
@@ -91,4 +105,7 @@
 
 .unverified {
   color: red;
+}
+.detailHeader {
+  padding: 0px 0 10px 5px !important;
 }

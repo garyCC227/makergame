@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import style from "assets/styles/InfoBar.module.css";
+import EditIcon from "@material-ui/icons/Edit";
+import InfoForm from "components/InfoForm";
 
+/* TODO:
+1. Wait for more information coming back
+2. be aware of the NaN value, make conditional rendering 
+*/
 export default function InfoBar(props) {
-  console.log(props.features);
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+
   function close() {
     const infoBar = document.getElementById("info");
     ReactDOM.unmountComponentAtNode(infoBar);
@@ -32,7 +41,9 @@ export default function InfoBar(props) {
         </div>
       </div>
 
+      <div class="ui divider"></div>
       <div className={style.row}>
+        <h3 className={"ui dividing header " + style.detailHeader}>Address</h3>
         {/* coordinates */}
         <div className={style.detail + " w3-margin-top"}>
           <i className="fas fa-location-arrow w3-xlarge w3-text-red"></i>
@@ -50,62 +61,91 @@ export default function InfoBar(props) {
           </div>
         </div>
         {/* w3w address1 */}
-        <div className={style.detail}>
-          <i className="fas fa-map-marked-alt w3-xlarge w3-text-red"></i>
+        <div className={style.detail + " w3-margin-top"}>
+          <i className="fas fa-map-marked-alt w3-xlarge w3-text-red "></i>
           <div className={style.place}>
             <h5>w3w Address</h5>
-            <p>{props.features.properties.w3w}</p>
+            {props.features.properties.w3w === "" ? (
+              <p>Not Defined</p>
+            ) : (
+              <p>{props.features.properties.w3w}</p>
+            )}
           </div>
         </div>
       </div>
+      <div class="ui divider"></div>
 
-      {/* more pollinate information */}
-      <div className={style.pollinateInfo}>
-        <div className={style.detail + " w3-margin-top"}>
-          <i className="fas fa-user-check w3-xlarge w3-text-teal"></i>
-          <div className={style.place}>
-            <h7>Existence</h7>
-            <p>
-              <span className={style.verified}>Verified</span>
-            </p>
+      <div className={style.detailContainer}>
+        <h3 className={"ui header " + style.detailHeader}>
+          Community Information
+        </h3>
+        <button
+          className={style.editButton + " btn btn-outline-info"}
+          onClick={handleShow}
+        >
+          <EditIcon fontSize="small" />
+        </button>
+
+        <InfoForm show={show} setShow={setShow} />
+        <div class="ui divider"></div>
+        {/* more pollinate information */}
+        <div className={style.pollinateInfo}>
+          <div className={style.detail + " w3-margin-top"}>
+            <i className="fas fa-user-check w3-xlarge w3-text-teal"></i>
+            <div className={style.place}>
+              <h7>Existence</h7>
+              <p>
+                <span className={style.verified}>Verified</span>
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className={style.detail + " w3-margin-top"}>
-          <i className="fas fa-charging-station w3-xlarge w3-text-teal"></i>
-          <div className={style.place}>
-            <h7>Electrified</h7>
-            <p>
-              <span className={style.unverified}>
-                {props.features.properties.electrified}
-              </span>
-            </p>
+          <div className={style.detail + " w3-margin-top"}>
+            <i className="fas fa-charging-station w3-xlarge w3-text-teal"></i>
+            <div className={style.place}>
+              <h7>Electrified</h7>
+              <p>
+                <span className={style.unverified}>
+                  {props.features.properties.electrified === null
+                    ? props.features.properties.electrified
+                    : "None"}
+                </span>
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className={style.detail}>
-          <i className="fas fa-users w3-xlarge w3-text-teal"></i>
-          <div className={style.place}>
-            <h7>Slum Size</h7>
-            <p>{props.features.properties.num_of_customers}</p>
+          <div className={style.detail}>
+            <i className="fas fa-users w3-xlarge w3-text-teal"></i>
+            <div className={style.place}>
+              <h7>Slum Size</h7>
+              <p>
+                {props.features.properties.num_of_customers === null
+                  ? props.features.properties.num_of_customers
+                  : "None"}
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className={style.detail}>
-          <i className="fas fa-users w3-xlarge w3-text-teal"></i>
-          <div className={style.place}>
-            <h7>Slum Type</h7>
-            <p>{props.features.properties.comm_type}</p>
+          <div className={style.detail}>
+            <i className="fas fa-users w3-xlarge w3-text-teal"></i>
+            <div className={style.place}>
+              <h7>Slum Type</h7>
+              <p>
+                {props.features.properties.comm_type === null
+                  ? props.features.properties.comm_type
+                  : "None"}
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className={style.detail}>
-          <i className="fas fa-hands w3-xlarge w3-text-teal"></i>
-          <div className={style.place}>
-            <h7>Servev By Pollinate</h7>
-            <p>
-              <span className={style.verified}>Yes</span>
-            </p>
+          <div className={style.detail}>
+            <i className="fas fa-hands w3-xlarge w3-text-teal"></i>
+            <div className={style.place}>
+              <h7>Servev By Pollinate</h7>
+              <p>
+                <span className={style.verified}>Yes</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>

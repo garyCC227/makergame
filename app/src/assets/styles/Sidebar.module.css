@@ -1,0 +1,36 @@
+.container {
+  display: none;
+  width: 100px;
+}
+
+.icon {
+  height: 7%;
+  background-color: #fcba05;
+}
+
+.icon-image {
+  margin-top: 5px;
+  max-width: 100px;
+}
+
+.links {
+  height: 90%;
+  background-color: #786e53;
+}
+
+.nav {
+  padding: 20px 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.navIcon {
+  margin-left: 0;
+}
+
+.navIcon:hover {
+  opacity: 0.8;
+}
