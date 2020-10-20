@@ -1,4 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Git Usage
+***Download the repo***
+>`git clone <Your URL>`
+
+***Push to github***
+>`1.git add .`
+>`2. git commit -m "What change you have done...???"`
+>`3.git push origin master`
+
+***Pull from github***
+>`git pull origin master`
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Install `yarn`
