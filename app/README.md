@@ -1,11 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Git Usage
+***Download the repo***
+>`git clone <Your URL>`
+
+***Push to github***
+>`1.git add .`
+>`2. git commit -m "What change you have done...???"`
+>`3.git push origin master`
+
+***Pull from github***
+>`git pull origin master`
+
+
+
+## How to run the app
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Install `yarn`
 >  Install `yarn`  via [link](https://classic.yarnpkg.com/en/docs/install#windows-stable)
-
-
-## How to run 
 
 #### 1. Install all the modules
 >In the `app/`, run `yarn install` to install all the modules
@@ -19,24 +30,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 >You will also see any lint errors in the console.
 
 
-
-
-
-
-
-
-###### TODO LIST
-
-- Backend
-  - Filter function
-  - Search funciton
-  - Nav bar to different page <- Need to build another page
-  - Add description
-  - Update community information
-- Front-end
-  - Information bar comment section
-  - add comment UI
-  - ????
 
 
 
