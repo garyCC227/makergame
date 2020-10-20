@@ -1,6 +1,6 @@
 import React from "react";
 import HomePage from "./components/Home";
-import Sidebar from "./components/Sidebar";
+import SideBar from "./components/SideBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
@@ -8,7 +8,7 @@ export default function App() {
   return (
     <Router>
       <div className="App">
-        <Sidebar />
+        <SideBar />
         <div className="content">
           <Switch>
             <Route path="/" component={HomePage} />
