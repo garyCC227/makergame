@@ -1,4 +1,4 @@
-### Git Usage
+## Git Usage
 ***Download the repo***
 >`git clone <Your URL>`
 
@@ -11,13 +11,12 @@
 >`git pull origin master`
 
 
+
+## How to run the app
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Install `yarn`
 >  Install `yarn`  via [link](https://classic.yarnpkg.com/en/docs/install#windows-stable)
-
-
-## How to run 
 
 #### 1. Install all the modules
 >In the `app/`, run `yarn install` to install all the modules
