@@ -29,7 +29,7 @@ export default function SearchBar(props) {
       <div className={style["search-bar"]}>
         <form className="form-inline">
           <i
-            className={" w3-hover-blue fas fa-bars w3-large w3-margin-left"}
+            className={"w3-hover-blue fas fa-bars w3-large w3-margin-left"}
             aria-hidden="true"
             data-tip="Sidebar"
             onClick={openSiderBar}

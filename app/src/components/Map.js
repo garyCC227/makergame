@@ -76,6 +76,8 @@ class Map extends React.Component {
             //remove previous info bar, if info bar is opening
             if (placeholder.innerHTML !== "") {
               ReactDOM.unmountComponentAtNode(placeholder);
+
+              //test
             }
 
             //add new info bar

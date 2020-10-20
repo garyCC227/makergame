@@ -20,7 +20,7 @@ import {
 
 const TealSwitch = withStyles({
   switchBase: {
-    color: teal[300],
+    color: teal[0],
     "&$checked": {
       color: teal[500],
     },
@@ -34,7 +34,7 @@ const TealSwitch = withStyles({
 
 const RedSwitch = withStyles({
   switchBase: {
-    color: red[300],
+    color: red[0],
     "&$checked": {
       color: red[500],
     },
@@ -48,7 +48,7 @@ const RedSwitch = withStyles({
 
 const LightBlueSwitch = withStyles({
   switchBase: {
-    color: lightBlue[300],
+    color: lightBlue[0],
     "&$checked": {
       color: lightBlue[500],
     },
@@ -62,7 +62,7 @@ const LightBlueSwitch = withStyles({
 
 const LimeSwitch = withStyles({
   switchBase: {
-    color: lime[300],
+    color: lime[0],
     "&$checked": {
       color: lime[500],
     },
@@ -76,7 +76,7 @@ const LimeSwitch = withStyles({
 
 const DeepOrangeSwitch = withStyles({
   switchBase: {
-    color: deepOrange[300],
+    color: deepOrange[0],
     "&$checked": {
       color: deepOrange[500],
     },
@@ -90,7 +90,7 @@ const DeepOrangeSwitch = withStyles({
 
 const OrangeSwitch = withStyles({
   switchBase: {
-    color: orange[300],
+    color: orange[0],
     "&$checked": {
       color: orange[500],
     },
@@ -104,7 +104,7 @@ const OrangeSwitch = withStyles({
 
 const BrownSwitch = withStyles({
   switchBase: {
-    color: brown[300],
+    color: brown[0],
     "&$checked": {
       color: brown[500],
     },
@@ -139,9 +139,9 @@ export default function Filter({ display }) {
         {/* Verified */}
         <ListItem>
           <ListItemIcon>
-            <i className="fas fa-circle" style={{ color: teal[500] }}></i>
+            <i className="fas fa-circle"></i>
           </ListItemIcon>
-          <ListItemText id="switch-list-label-verified" primary="verified" />
+          <ListItemText id="switch-list-label-verified" primary="Verified" />
           <ListItemSecondaryAction>
             <TealSwitch
               edge="end"
@@ -153,11 +153,11 @@ export default function Filter({ display }) {
         {/* Unverified */}
         <ListItem>
           <ListItemIcon>
-            <i className="fas fa-circle" style={{ color: red[500] }}></i>
+            {/* <i className="fas fa-circle" style={{ color: red[500] }}></i> */}
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-unverified"
-            primary="unverified"
+            primary="Unverified"
           />
           <ListItemSecondaryAction>
             <RedSwitch
@@ -171,7 +171,7 @@ export default function Filter({ display }) {
         {/* Served */}
         <ListItem>
           <ListItemIcon>
-            <i className="fas fa-circle" style={{ color: lightBlue[500] }}></i>
+            {/* <i className="fas fa-circle" style={{ color: lightBlue[500] }}></i> */}
           </ListItemIcon>
           <ListItemText id="switch-list-label-served" primary="Served" />
           <ListItemSecondaryAction>
@@ -185,7 +185,7 @@ export default function Filter({ display }) {
         {/* Unserved */}
         <ListItem>
           <ListItemIcon>
-            <i className="fas fa-circle" style={{ color: lime[500] }}></i>
+            {/* <i className="fas fa-circle" style={{ color: lime[500] }}></i> */}
           </ListItemIcon>
           <ListItemText id="switch-list-label-unserved" primary="Unserved" />
           <ListItemSecondaryAction>
@@ -199,7 +199,7 @@ export default function Filter({ display }) {
         {/* Fully Electrified */}
         <ListItem>
           <ListItemIcon>
-            <i className="fas fa-circle" style={{ color: deepOrange[500] }}></i>
+            {/* <i className="fas fa-circle" style={{ color: deepOrange[500] }}></i> */}
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-fullelectrified"
@@ -217,7 +217,7 @@ export default function Filter({ display }) {
         {/* Partially Electrified */}
         <ListItem>
           <ListItemIcon>
-            <i className="fas fa-circle" style={{ color: orange[500] }}></i>
+            {/* <i className="fas fa-circle" style={{ color: orange[500] }}></i> */}
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-partelectrified"
@@ -235,7 +235,7 @@ export default function Filter({ display }) {
         {/* Not Electrified */}
         <ListItem>
           <ListItemIcon>
-            <i className="fas fa-circle" style={{ color: brown[500] }}></i>
+            {/* <i className="fas fa-circle" style={{ color: brown[500] }}></i> */}
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-noelectrified"

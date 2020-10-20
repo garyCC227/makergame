@@ -45,11 +45,12 @@ export default function InfoForm({ show, setShow }) {
                 <i className="fas fa-charging-station w3-xlarge w3-text-teal w3-margin-right"></i>
                 Eletrified
               </label>
-              <input
-                type="text"
-                className="form-control"
-                id="exampleInputPassword1"
-              />
+              <select class="custom-select">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
             </div>
 
             {/* community size */}
