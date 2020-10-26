@@ -8,6 +8,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Switch from "@material-ui/core/Switch";
 import { withStyles } from "@material-ui/core/styles";
+import Checkbox from "@material-ui/core/Checkbox";
 import {
   teal,
   red,
@@ -208,22 +209,32 @@ export default function Filter({ display, filterFunc }) {
         {/* Verified */}
         <ListItem>
           <ListItemIcon>
-            <TealSwitch
-              size="small"
+            <Checkbox
+              size="medium"
               onChange={() => handleToggle("verified")}
               checked={checked.indexOf("verified") !== -1}
             />
+            {/* <TealSwitch
+              size="small"
+              onChange={() => handleToggle("verified")}
+              checked={checked.indexOf("verified") !== -1}
+            /> */}
           </ListItemIcon>
           <ListItemText id="switch-list-label-verified" primary="Verified" />
         </ListItem>
         {/* Unverified */}
         <ListItem>
           <ListItemIcon>
-            <RedSwitch
-              size="small"
+            <Checkbox
+              size="medium"
               onChange={() => handleToggle("unverified")}
               checked={checked.indexOf("unverified") !== -1}
             />
+            {/* <RedSwitch
+              size="small"
+              onChange={() => handleToggle("unverified")}
+              checked={checked.indexOf("unverified") !== -1}
+            /> */}
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-unverified"
@@ -234,33 +245,48 @@ export default function Filter({ display, filterFunc }) {
         {/* Served */}
         <ListItem>
           <ListItemIcon>
-            <LightBlueSwitch
-              size="small"
+            <Checkbox
+              size="medium"
               onChange={() => handleToggle("served")}
               checked={checked.indexOf("served") !== -1}
             />
+            {/* <LightBlueSwitch
+              size="small"
+              onChange={() => handleToggle("served")}
+              checked={checked.indexOf("served") !== -1}
+            /> */}
           </ListItemIcon>
           <ListItemText id="switch-list-label-served" primary="Served" />
         </ListItem>
         {/* Unserved */}
         <ListItem>
           <ListItemIcon>
-            <LimeSwitch
-              size="small"
+            <Checkbox
+              size="medium"
               onChange={() => handleToggle("unserved")}
               checked={checked.indexOf("unserved") !== -1}
             />
+            {/* <LimeSwitch
+              size="small"
+              onChange={() => handleToggle("unserved")}
+              checked={checked.indexOf("unserved") !== -1}
+            /> */}
           </ListItemIcon>
           <ListItemText id="switch-list-label-unserved" primary="Unserved" />
         </ListItem>
         {/* Fully Electrified */}
         <ListItem>
           <ListItemIcon>
-            <DeepOrangeSwitch
-              size="small"
+            <Checkbox
+              size="medium"
               onChange={() => handleToggle("Fully Electrified")}
               checked={checked.indexOf("Fully Electrified") !== -1}
             />
+            {/* <DeepOrangeSwitch
+              size="small"
+              onChange={() => handleToggle("Fully Electrified")}
+              checked={checked.indexOf("Fully Electrified") !== -1}
+            /> */}
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-fullelectrified"
@@ -271,11 +297,16 @@ export default function Filter({ display, filterFunc }) {
         {/* Partially Electrified */}
         <ListItem>
           <ListItemIcon>
-            <OrangeSwitch
-              size="small"
+            <Checkbox
+              size="medium"
               onChange={() => handleToggle("Partially Electrified")}
               checked={checked.indexOf("Partially Electrified") !== -1}
             />
+            {/* <OrangeSwitch
+              size="small"
+              onChange={() => handleToggle("Partially Electrified")}
+              checked={checked.indexOf("Partially Electrified") !== -1}
+            /> */}
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-partelectrified"
@@ -286,11 +317,16 @@ export default function Filter({ display, filterFunc }) {
         {/* Not Electrified */}
         <ListItem>
           <ListItemIcon>
-            <BrownSwitch
-              size="small"
+            <Checkbox
+              size="medium"
               onChange={() => handleToggle("Not Electrified")}
               checked={checked.indexOf("Not Electrified") !== -1}
             />
+            {/* <BrownSwitch
+              size="small"
+              onChange={() => handleToggle("Not Electrified")}
+              checked={checked.indexOf("Not Electrified") !== -1}
+            /> */}
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-noelectrified"
