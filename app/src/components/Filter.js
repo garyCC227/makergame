@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "assets/styles/Filter.module.css";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -116,22 +116,91 @@ const BrownSwitch = withStyles({
   track: {},
 })(Switch);
 
-export default function Filter({ display }) {
+export default function Filter({ display, filterFunc }) {
   const [checked, setChecked] = useState([]);
+
+  const filterCheck = (newChecked, value) => {
+    //for verified
+    if (value === "verified" && checked.indexOf("unverified") !== -1) {
+      const currentIndex = checked.indexOf("unverified");
+      newChecked.splice(currentIndex, 1);
+    }
+
+    //unverified
+    if (value === "unverified" && checked.indexOf("verified") !== -1) {
+      const currentIndex = checked.indexOf("verified");
+      newChecked.splice(currentIndex, 1);
+    }
+
+    //served
+    if (value === "served" && checked.indexOf("unserved") !== -1) {
+      const currentIndex = checked.indexOf("unserved");
+      newChecked.splice(currentIndex, 1);
+    }
+
+    //unserved
+    if (value === "unserved" && checked.indexOf("served") !== -1) {
+      const currentIndex = checked.indexOf("served");
+      newChecked.splice(currentIndex, 1);
+    }
+
+    //fully electirfied
+    if (value === "Fully Electrified") {
+      if (checked.indexOf("Partially Electrified") !== -1) {
+        const currentIndex = checked.indexOf("Partially Electrified");
+        newChecked.splice(currentIndex, 1);
+      }
+
+      if (checked.indexOf("Not Electrified") !== -1) {
+        const currentIndex = checked.indexOf("Not Electrified");
+        newChecked.splice(currentIndex, 1);
+      }
+    }
+
+    //partially electrified
+    if (value === "Partially Electrified") {
+      if (checked.indexOf("Fully Electrified") !== -1) {
+        const currentIndex = checked.indexOf("Fully Electrified");
+        newChecked.splice(currentIndex, 1);
+      }
+
+      if (checked.indexOf("Not Electrified") !== -1) {
+        const currentIndex = checked.indexOf("Not Electrified");
+        newChecked.splice(currentIndex, 1);
+      }
+    }
+
+    //not eletrified
+    if (value === "Not Electrified") {
+      if (checked.indexOf("Partially Electrified") !== -1) {
+        const currentIndex = checked.indexOf("Partially Electrified");
+        newChecked.splice(currentIndex, 1);
+      }
+
+      if (checked.indexOf("Fully Electrified") !== -1) {
+        const currentIndex = checked.indexOf("Fully Electrified");
+        newChecked.splice(currentIndex, 1);
+      }
+    }
+  };
 
   const handleToggle = (value) => {
     const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+    let newChecked = [...checked];
 
     if (currentIndex === -1) {
       newChecked.push(value);
+      filterCheck(newChecked, value);
     } else {
       newChecked.splice(currentIndex, 1);
     }
 
-    console.log(checked);
     setChecked(newChecked);
   };
+
+  useEffect(() => {
+    filterFunc(checked);
+  }, [checked, filterFunc]);
 
   return (
     <div className={style.filter} style={{ display: display }}>
@@ -139,115 +208,94 @@ export default function Filter({ display }) {
         {/* Verified */}
         <ListItem>
           <ListItemIcon>
-            <i className="fas fa-circle"></i>
-          </ListItemIcon>
-          <ListItemText id="switch-list-label-verified" primary="Verified" />
-          <ListItemSecondaryAction>
             <TealSwitch
-              edge="end"
+              size="small"
               onChange={() => handleToggle("verified")}
               checked={checked.indexOf("verified") !== -1}
             />
-          </ListItemSecondaryAction>
+          </ListItemIcon>
+          <ListItemText id="switch-list-label-verified" primary="Verified" />
         </ListItem>
         {/* Unverified */}
         <ListItem>
           <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: red[500] }}></i> */}
+            <RedSwitch
+              size="small"
+              onChange={() => handleToggle("unverified")}
+              checked={checked.indexOf("unverified") !== -1}
+            />
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-unverified"
             primary="Unverified"
           />
-          <ListItemSecondaryAction>
-            <RedSwitch
-              edge="end"
-              onChange={() => handleToggle("unverified")}
-              checked={checked.indexOf("unverified") !== -1}
-            />
-          </ListItemSecondaryAction>
         </ListItem>
 
         {/* Served */}
         <ListItem>
           <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: lightBlue[500] }}></i> */}
-          </ListItemIcon>
-          <ListItemText id="switch-list-label-served" primary="Served" />
-          <ListItemSecondaryAction>
             <LightBlueSwitch
-              edge="end"
+              size="small"
               onChange={() => handleToggle("served")}
               checked={checked.indexOf("served") !== -1}
             />
-          </ListItemSecondaryAction>
+          </ListItemIcon>
+          <ListItemText id="switch-list-label-served" primary="Served" />
         </ListItem>
         {/* Unserved */}
         <ListItem>
           <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: lime[500] }}></i> */}
-          </ListItemIcon>
-          <ListItemText id="switch-list-label-unserved" primary="Unserved" />
-          <ListItemSecondaryAction>
             <LimeSwitch
-              edge="end"
+              size="small"
               onChange={() => handleToggle("unserved")}
               checked={checked.indexOf("unserved") !== -1}
             />
-          </ListItemSecondaryAction>
+          </ListItemIcon>
+          <ListItemText id="switch-list-label-unserved" primary="Unserved" />
         </ListItem>
         {/* Fully Electrified */}
         <ListItem>
           <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: deepOrange[500] }}></i> */}
+            <DeepOrangeSwitch
+              size="small"
+              onChange={() => handleToggle("Fully Electrified")}
+              checked={checked.indexOf("Fully Electrified") !== -1}
+            />
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-fullelectrified"
             primary="Fully Electrified"
           />
-          <ListItemSecondaryAction>
-            <DeepOrangeSwitch
-              edge="end"
-              onChange={() => handleToggle("fullelectrified")}
-              checked={checked.indexOf("fullelectrified") !== -1}
-            />
-          </ListItemSecondaryAction>
         </ListItem>
 
         {/* Partially Electrified */}
         <ListItem>
           <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: orange[500] }}></i> */}
+            <OrangeSwitch
+              size="small"
+              onChange={() => handleToggle("Partially Electrified")}
+              checked={checked.indexOf("Partially Electrified") !== -1}
+            />
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-partelectrified"
             primary="Partially Electrified"
           />
-          <ListItemSecondaryAction>
-            <OrangeSwitch
-              edge="end"
-              onChange={() => handleToggle("partelectrified")}
-              checked={checked.indexOf("partelectrified") !== -1}
-            />
-          </ListItemSecondaryAction>
         </ListItem>
 
         {/* Not Electrified */}
         <ListItem>
           <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: brown[500] }}></i> */}
+            <BrownSwitch
+              size="small"
+              onChange={() => handleToggle("Not Electrified")}
+              checked={checked.indexOf("Not Electrified") !== -1}
+            />
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-noelectrified"
             primary="Not Electrified"
           />
-          <ListItemSecondaryAction>
-            <BrownSwitch
-              edge="end"
-              onChange={() => handleToggle("noelectrified")}
-              checked={checked.indexOf("noelectrified") !== -1}
-            />
-          </ListItemSecondaryAction>
         </ListItem>
       </List>
     </div>

@@ -1,0 +1,494 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1000,
+                "city": "Bangalore",
+                "name": "Gas community",
+                "w3w": "debit.beans.ballooned",
+                "num_of_tens": 97.0,
+                "num_of_customers": 262,
+                "comm_type": "Pukka (Concrete houses)",
+                "electrified": "Not Electrified",
+                "tent_nonelectrified": 97.0,
+                "verified": "false",
+                "served": "true"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.57420539855957,
+                            12.96993279401043
+                        ],
+                        [
+                            77.58004188537598,
+                            12.964746999572585
+                        ],
+                        [
+                            77.58532047271729,
+                            12.96687987972422
+                        ],
+                        [
+                            77.58248805999754,
+                            12.97198198943582
+                        ],
+                        [
+                            77.57514953613281,
+                            12.973654789512171
+                        ],
+                        [
+                            77.57420539855957,
+                            12.96993279401043
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1001,
+                "city": "Bangalore",
+                "name": "Anaconda Community",
+                "w3w": "badly.webcams.exposes",
+                "num_of_tens": 43.0,
+                "num_of_customers": 109,
+                "comm_type": "",
+                "electrified": "Partially Electrified",
+                "tent_nonelectrified": 0.0,
+                "verified": "true",
+                "served": "false"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -70.29550552368164,
+                            37.473938500018825
+                        ],
+                        [
+                            -70.29644966125488,
+                            37.479558009131516
+                        ],
+                        [
+                            -70.29971122741699,
+                            37.47724214141305
+                        ],
+                        [
+                            -70.30340194702148,
+                            37.47077095413427
+                        ],
+                        [
+                            -70.29610633850098,
+                            37.46825044538036
+                        ],
+                        [
+                            -70.2897548675537,
+                            37.46681984855146
+                        ],
+                        [
+                            -70.28486251831055,
+                            37.47506243564607
+                        ],
+                        [
+                            -70.29550552368164,
+                            37.473938500018825
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1002,
+                "city": "Bangalore",
+                "name": "Pigroot",
+                "w3w": "segments.suddenly.buckling",
+                "num_of_tens": 52.0,
+                "num_of_customers": 237,
+                "comm_type": "",
+                "electrified": "Not Electrified",
+                "tent_nonelectrified": 52.0,
+                "verified": "true",
+                "served": "false"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.54150390625,
+                            12.95504425527593
+                        ],
+                        [
+                            77.54974365234375,
+                            12.95504425527593
+                        ],
+                        [
+                            77.54974365234375,
+                            12.959728385939396
+                        ],
+                        [
+                            77.54150390625,
+                            12.959728385939396
+                        ],
+                        [
+                            77.54150390625,
+                            12.95504425527593
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1003,
+                "city": "Bangalore",
+                "name": "Nagar Bhivi (Small)",
+                "w3w": "fatherly.madness.firework",
+                "num_of_tens": 2.0,
+                "num_of_customers": 18,
+                "comm_type": "",
+                "electrified": "Not Electrified",
+                "tent_nonelectrified": 0.0,
+                "verified": "false",
+                "served": "true"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.6187515258789,
+                            12.941660539489433
+                        ],
+                        [
+                            77.62596130371094,
+                            12.941660539489433
+                        ],
+                        [
+                            77.62596130371094,
+                            12.947683300542897
+                        ],
+                        [
+                            77.6187515258789,
+                            12.947683300542897
+                        ],
+                        [
+                            77.6187515258789,
+                            12.941660539489433
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1004,
+                "city": "Bangalore",
+                "name": "Kodukalli",
+                "w3w": "",
+                "num_of_tens": 30.0,
+                "num_of_customers": 26,
+                "comm_type": "Shanty (Tents)",
+                "electrified": "Fully Electrified",
+                "tent_nonelectrified": 10.0,
+                "verified": "true",
+                "served": "true"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.52914428710938,
+                            12.987162237749484
+                        ],
+                        [
+                            77.5360107421875,
+                            12.987162237749484
+                        ],
+                        [
+                            77.5360107421875,
+                            12.993852961834985
+                        ],
+                        [
+                            77.52914428710938,
+                            12.993852961834985
+                        ],
+                        [
+                            77.52914428710938,
+                            12.987162237749484
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1005,
+                "city": "Bangalore",
+                "name": "Kamta basti",
+                "w3w": "Ballparks.burns.bought",
+                "num_of_tens": 1200.0,
+                "num_of_customers": 185,
+                "comm_type": "Shanty (Tents)",
+                "electrified": "",
+                "tent_nonelectrified": 300.0,
+                "verified": "false",
+                "served": "false"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.55146026611328,
+                            12.993852961834985
+                        ],
+                        [
+                            77.5579833984375,
+                            12.993852961834985
+                        ],
+                        [
+                            77.5579833984375,
+                            12.998870886590765
+                        ],
+                        [
+                            77.55146026611328,
+                            12.998870886590765
+                        ],
+                        [
+                            77.55146026611328,
+                            12.993852961834985
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1008,
+                "city": "Bangalore",
+                "name": "Alo Black",
+                "w3w": "",
+                "num_of_tens": 22.0,
+                "num_of_customers": 241,
+                "comm_type": "",
+                "electrified": "",
+                "tent_nonelectrified": 22.0,
+                "verified": "false",
+                "served": "true"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.57686614990234,
+                            12.993183897537897
+                        ],
+                        [
+                            77.5802993774414,
+                            12.993183897537897
+                        ],
+                        [
+                            77.5802993774414,
+                            12.997867309754252
+                        ],
+                        [
+                            77.57686614990234,
+                            12.997867309754252
+                        ],
+                        [
+                            77.57686614990234,
+                            12.993183897537897
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1009,
+                "city": "Bangalore",
+                "name": "Hulimavup",
+                "w3w": "",
+                "num_of_tens": 36.0,
+                "num_of_customers": 268,
+                "comm_type": "",
+                "electrified": "Not Electrified",
+                "tent_nonelectrified": 36.0,
+                "verified": "true",
+                "served": "true"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.6125717163086,
+                            12.983816808126269
+                        ],
+                        [
+                            77.61737823486328,
+                            12.983816808126269
+                        ],
+                        [
+                            77.61737823486328,
+                            12.990173085892906
+                        ],
+                        [
+                            77.6125717163086,
+                            12.990173085892906
+                        ],
+                        [
+                            77.6125717163086,
+                            12.983816808126269
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1010,
+                "city": "Bangalore",
+                "name": "Peenya Temple",
+                "w3w": "louder.fended.deflection",
+                "num_of_tens": 25.0,
+                "num_of_customers": 129,
+                "comm_type": "Shanty (Tents)",
+                "electrified": "Not Electrified",
+                "tent_nonelectrified": 25.0,
+                "verified": "true",
+                "served": "true"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.56072998046875,
+                            12.924595259976796
+                        ],
+                        [
+                            77.56656646728516,
+                            12.924595259976796
+                        ],
+                        [
+                            77.56656646728516,
+                            12.929279962726634
+                        ],
+                        [
+                            77.56072998046875,
+                            12.929279962726634
+                        ],
+                        [
+                            77.56072998046875,
+                            12.924595259976796
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1011,
+                "city": "Bangalore",
+                "name": "Caiment goodan",
+                "w3w": "sliding.yourself.punctual",
+                "num_of_tens": 6.0,
+                "num_of_customers": 168,
+                "comm_type": "",
+                "electrified": "Not Electrified",
+                "tent_nonelectrified": 6.0,
+                "verified": "false",
+                "served": "true"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.59506225585938,
+                            13.024293478790302
+                        ],
+                        [
+                            77.60021209716797,
+                            13.024293478790302
+                        ],
+                        [
+                            77.60021209716797,
+                            13.02763836258297
+                        ],
+                        [
+                            77.59506225585938,
+                            13.02763836258297
+                        ],
+                        [
+                            77.59506225585938,
+                            13.024293478790302
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "id": 1012,
+                "city": "Bangalore",
+                "name": "Munnekollal",
+                "w3w": "labels.neatly.entrust",
+                "num_of_tens": 115.0,
+                "num_of_customers": 458,
+                "comm_type": "",
+                "electrified": "Partially Electrified",
+                "tent_nonelectrified": 0.0,
+                "verified": "false",
+                "served": "false"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            77.54562377929688,
+                            13.014927563901615
+                        ],
+                        [
+                            77.54940032958984,
+                            13.014927563901615
+                        ],
+                        [
+                            77.54940032958984,
+                            13.01860707268372
+                        ],
+                        [
+                            77.54562377929688,
+                            13.01860707268372
+                        ],
+                        [
+                            77.54562377929688,
+                            13.014927563901615
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import HomePage from "./components/Home";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/SideBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 

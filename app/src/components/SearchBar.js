@@ -3,8 +3,8 @@ import style from "assets/styles/SearchBar.module.css";
 import ReactTooltip from "react-tooltip";
 import Filter from "components/Filter";
 
-export default function SearchBar(props) {
-  const [filterDisplay, setFilter] = useState("none");
+export default function SearchBar({ filterFunc }) {
+  const [filterDisplay, setFilter] = useState("block");
 
   const toggleFilter = () => {
     if (filterDisplay === "none") {
@@ -59,7 +59,7 @@ export default function SearchBar(props) {
       </div>
       {/* end of search bar */}
 
-      <Filter display={filterDisplay} />
+      <Filter display={filterDisplay} filterFunc={filterFunc} />
 
       <ReactTooltip multiline={true} />
     </div>

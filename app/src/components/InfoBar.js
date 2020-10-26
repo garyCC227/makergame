@@ -51,10 +51,14 @@ export default function InfoBar(props) {
             <h5>Coordinates</h5>
             <p>
               (
-              {Math.round(props.features.geometry.coordinates[0] * 100000) /
+              {Math.round(
+                props.features.geometry.coordinates[0][0][0] * 100000
+              ) /
                 100000 +
                 " ," +
-                Math.round(props.features.geometry.coordinates[1] * 100000) /
+                Math.round(
+                  props.features.geometry.coordinates[0][0][1] * 100000
+                ) /
                   100000}
               )
             </p>
