@@ -75,6 +75,7 @@
 .detail {
   display: flex;
   padding: 0px 20px;
+  max-width: 180px;
 }
 
 .place {
@@ -91,9 +92,11 @@
   color: grey;
   opacity: 0.9;
 }
-.place h7 {
+.place > h7 {
   font-size: 11pt;
-  font-weight: bold;
+  font-weight: normal;
+  width: 20px;
+  word-wrap: break-word;
 }
 .place p {
   font-size: 13pt;
@@ -107,5 +110,6 @@
   color: red;
 }
 .detailHeader {
-  padding: 0px 0 10px 5px !important;
+  padding: 0px 0 5px 5px !important;
+  margin-left: 10px !important;
 }

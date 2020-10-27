@@ -240,6 +240,9 @@ export default function Filter({ display, filterFunc }) {
             id="switch-list-label-unverified"
             primary="Unverified"
           />
+          <ListItemSecondaryAction>
+            <i className="fas fas-circle">s</i>
+          </ListItemSecondaryAction>
         </ListItem>
 
         {/* Served */}

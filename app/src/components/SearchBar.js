@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "assets/styles/SearchBar.module.css";
 import ReactTooltip from "react-tooltip";
 import Filter from "components/Filter";
+import FilterIcon from "assets/filter.svg";
 
 export default function SearchBar({ filterFunc }) {
   const [filterDisplay, setFilter] = useState("block");
@@ -42,19 +43,21 @@ export default function SearchBar({ filterFunc }) {
           />
           <i
             className={
-              "fas fa-directions w3-xlarge w3-margin-left w3-hover-opacity w3-text-blue"
+              "fas fa-directions w3-xlarge w3-hover-opacity w3-text-blue"
             }
             data-tip="Search"
             aria-hidden="true"
           ></i>
-          <i
+          <img
+            src={FilterIcon}
+            alt="filters"
             className={
-              "fas fa-ellipsis-v w3-large w3-margin-left w3-hover-opacity w3-text-grey"
+              "w3-margin-left w3-hover-opacity w3-text-grey " + style.filterIcon
             }
             data-tip="Filter"
             aria-hidden="true"
             onClick={toggleFilter}
-          ></i>
+          />
         </form>
       </div>
       {/* end of search bar */}

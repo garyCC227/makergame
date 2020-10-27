@@ -24,3 +24,8 @@
   width: 220px !important;
   border: none;
 }
+
+.filterIcon {
+  width: 25px;
+  height: auto;
+}

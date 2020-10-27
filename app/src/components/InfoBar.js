@@ -41,7 +41,7 @@ export default function InfoBar(props) {
         </div>
       </div>
 
-      <div class="ui divider"></div>
+      <div className="ui divider"></div>
       <div className={style.row}>
         <h3 className={"ui dividing header " + style.detailHeader}>Address</h3>
         {/* coordinates */}
@@ -77,7 +77,7 @@ export default function InfoBar(props) {
           </div>
         </div>
       </div>
-      <div class="ui divider"></div>
+      <div className="ui divider"></div>
 
       <div className={style.detailContainer}>
         <h3 className={"ui header " + style.detailHeader}>
@@ -91,20 +91,10 @@ export default function InfoBar(props) {
         </button>
 
         <InfoForm show={show} setShow={setShow} />
-        <div class="ui divider"></div>
+        <div className="ui divider"></div>
         {/* more pollinate information */}
         <div className={style.pollinateInfo}>
-          <div className={style.detail + " w3-margin-top"}>
-            <i className="fas fa-user-check w3-xlarge w3-text-teal"></i>
-            <div className={style.place}>
-              <h7>Existence</h7>
-              <p>
-                <span className={style.verified}>Verified</span>
-              </p>
-            </div>
-          </div>
-
-          <div className={style.detail + " w3-margin-top"}>
+          <div className={style.detail}>
             <i className="fas fa-charging-station w3-xlarge w3-text-teal"></i>
             <div className={style.place}>
               <h7>Electrified</h7>
@@ -151,12 +141,27 @@ export default function InfoBar(props) {
               </p>
             </div>
           </div>
+
+          <div className={style.detail}>
+            <i className="fas fa-user-check w3-xlarge w3-text-teal"></i>
+            <div className={style.place}>
+              <h7>Existence</h7>
+              <p>
+                {/* <span className={style.verified}>Verified</span> */}
+                <select className={style.verified + " ui dropdown"}>
+                  <option value="">Verified</option>
+                  <option value="1">Accpet</option>
+                  <option value="0">Reject</option>
+                </select>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className={style.row}>
+      {/* <div className={style.row}>
         <button className="btn btn-info w3-padding">Add Comment</button>
-      </div>
+      </div> */}
     </div>
   );
 }
