@@ -17,7 +17,7 @@ export default function InfoForm({ show, setShow }) {
             <div className="form-group">
               <label for="exampleInputEmail1">
                 <i className="fas fa-users w3-xlarge w3-text-teal w3-margin-right"></i>
-                Number of Tents
+                Serve By Pollinate
               </label>
               <input
                 type="email"
@@ -30,7 +30,7 @@ export default function InfoForm({ show, setShow }) {
             <div className="form-group">
               <label for="exampleInputPassword1">
                 <i className="fas fa-users w3-xlarge w3-text-teal w3-margin-right"></i>
-                Number of Customers
+                Slum Type
               </label>
               <input
                 type="text"
@@ -43,13 +43,13 @@ export default function InfoForm({ show, setShow }) {
             <div className="form-group">
               <label for="exampleInputPassword1">
                 <i className="fas fa-charging-station w3-xlarge w3-text-teal w3-margin-right"></i>
-                Eletrified
+                Electrified
               </label>
               <select class="custom-select">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>Select Electrified Type..</option>
+                <option value="1">Fully Electrified</option>
+                <option value="2">Partially Electrified</option>
+                <option value="3">Not Electrified</option>
               </select>
             </div>
 
@@ -57,7 +57,7 @@ export default function InfoForm({ show, setShow }) {
             <div className="form-group">
               <label for="exampleInputPassword1">
                 <i className="fas fa-users w3-xlarge w3-text-teal w3-margin-right"></i>
-                Community size
+                Slum Size
               </label>
               <input
                 type="text"
@@ -66,42 +66,6 @@ export default function InfoForm({ show, setShow }) {
               />
             </div>
 
-            {/* number of tents without eletrified */}
-            <div className="form-group">
-              <label for="exampleInputPassword1">
-                <i className="fas fa-users w3-xlarge w3-text-teal w3-margin-right"></i>
-                # of tents without eletrified
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="exampleInputPassword1"
-              />
-            </div>
-
-            {/* verified */}
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />
-              <label className="form-check-label" for="exampleCheck1">
-                Verified by Pollinate
-              </label>
-            </div>
-
-            {/* served by Pollinate */}
-            <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />
-              <label className="form-check-label" for="exampleCheck1">
-                Served by Pollinate
-              </label>
-            </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
