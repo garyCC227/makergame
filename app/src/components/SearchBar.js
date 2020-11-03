@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import style from "assets/styles/SearchBar.module.css";
 import ReactTooltip from "react-tooltip";
 import Filter from "components/Filter";
+import FilterIcon from "assets/filter.svg";
 
-export default function SearchBar(props) {
-  const [filterDisplay, setFilter] = useState("none");
+export default function SearchBar({ filterFunc }) {
+  const [filterDisplay, setFilter] = useState("block");
 
   const toggleFilter = () => {
     if (filterDisplay === "none") {
@@ -42,24 +43,27 @@ export default function SearchBar(props) {
           />
           <i
             className={
-              "fas fa-directions w3-xlarge w3-margin-left w3-hover-opacity w3-text-blue"
+              "fas fa-directions w3-xlarge w3-hover-opacity w3-text-blue"
             }
             data-tip="Search"
             aria-hidden="true"
           ></i>
-          <i
+          <img
+            src={FilterIcon}
+            alt="filters"
             className={
-              "fas fa-ellipsis-v w3-large w3-margin-left w3-hover-opacity w3-text-grey"
+              "w3-margin-left w3-hover-opacity w3-text-grey " + style.filterIcon
             }
+            //hello
             data-tip="Filter"
             aria-hidden="true"
             onClick={toggleFilter}
-          ></i>
+          />
         </form>
       </div>
       {/* end of search bar */}
 
-      <Filter display={filterDisplay} />
+      <Filter display={filterDisplay} filterFunc={filterFunc} />
 
       <ReactTooltip multiline={true} />
     </div>

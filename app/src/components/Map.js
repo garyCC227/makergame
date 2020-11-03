@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import mapboxgl from "mapbox-gl";
-import geoFeatures from "assets/Bengaluru.geojson";
+import geoFeatures from "assets/Bengaluru";
 import InfoBar from "components/InfoBar";
 import SearchBar from "./SearchBar";
 
@@ -14,27 +14,31 @@ class Map extends React.Component {
     this.state = {
       lng: 77.6887,
       lat: 13.0194,
-
-      // test 2
-      // lat: 45.137451890638886,
-      // lng: -68.13734351262877,
-
       zoom: 10,
+
+      //temp use
+      geoData: geoFeatures,
     };
+    this.map = null;
+    this.geoData = geoFeatures;
+    this.mapContainer = React.createRef();
+    this.loadCommunity = this.loadCommunity.bind(this);
+    this.showFilteredslum = this.showFilteredslum.bind(this);
+    this.filterGeojson = this.filterGeojson.bind(this);
   }
 
   componentDidMount() {
-    //TODO: FOR debug only
-    // const placeholder = document.getElementById("info");
-    // ReactDOM.render(<InfoBar />, placeholder);
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: "mapbox://styles/mapbox/satellite-streets-v11",
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom,
       // minZoom: 10,
     });
+    this.loadCommunity(this.map);
+  }
 
+  async loadCommunity(map) {
     map.on("move", () => {
       this.setState({
         lng: map.getCenter().lng.toFixed(4),
@@ -43,110 +47,132 @@ class Map extends React.Component {
       });
     });
 
-    this.loadCommunity(map);
+    await map.on("load", function () {
+      map.addSource("polygons", {
+        type: "geojson",
+        data: geoFeatures,
+      });
+      map.addLayer({
+        id: "communities",
+        type: "fill",
+        source: "polygons",
+        layout: {},
+        paint: {
+          "fill-color": "#f08",
+          "fill-opacity": 0.5,
+        },
+      });
+      //add pop-up
+      map.on("click", "communities", function (e) {
+        const placeholder = document.getElementById("info");
+
+        //remove previous info bar, if info bar is opening
+        if (placeholder.innerHTML !== "") {
+          ReactDOM.unmountComponentAtNode(placeholder);
+
+          //test
+        }
+
+        //add new info bar
+        ReactDOM.render(<InfoBar features={e.features[0]} />, placeholder);
+      });
+
+      // Change the cursor to a pointer when the mouse is over the states layer.
+      map.on("mouseenter", "communities", function () {
+        map.getCanvas().style.cursor = "pointer";
+      });
+
+      // Change it back to a pointer when it leaves.
+      map.on("mouseleave", "communities", function () {
+        map.getCanvas().style.cursor = "";
+      });
+    });
   }
 
-  loadCommunity(map) {
-    map.on("load", function () {
-      map.loadImage(
-        "https://img.icons8.com/officexs/30/000000/marker.png",
-        function (error, image) {
-          if (error) throw error;
-          map.addImage("custom-marker", image);
-          // Add a GeoJSON source
-          map.addSource("points", {
-            type: "geojson",
-            data: geoFeatures,
-          });
+  //show filtered communities on UI
+  showFilteredslum(keywords) {
+    console.log(keywords);
+    if (keywords.length === 0 && this.map.getSource("polygons")) {
+      this.map.getSource("polygons").setData({ ...this.geoData });
+      return;
+    }
+    const result = this.filterGeojson(keywords);
 
-          // Add a symbol layer
-          map.addLayer({
-            id: "communities",
-            type: "symbol",
-            source: "points",
-            layout: {
-              "icon-image": "custom-marker",
-            },
-          });
+    const newJson = {
+      type: "FeatureCollection",
+      features: result,
+    };
+    if (this.map.getSource("polygons")) {
+      this.map.getSource("polygons").setData(newJson);
+    }
+  }
 
-          //add pop-up
-          map.on("click", "communities", function (e) {
-            const placeholder = document.getElementById("info");
+  //filter helper
+  filterHelper(keyword, geo) {
+    if (keyword === "verified" && geo["properties"].verified === "true") {
+      return true;
+    }
 
-            //remove previous info bar, if info bar is opening
-            if (placeholder.innerHTML !== "") {
-              ReactDOM.unmountComponentAtNode(placeholder);
+    if (keyword === "unverified" && geo["properties"].verified === "false") {
+      return true;
+    }
 
-              //test
-            }
+    if (keyword === "served" && geo["properties"].served === "true") {
+      return true;
+    }
 
-            //add new info bar
-            ReactDOM.render(<InfoBar features={e.features[0]} />, placeholder);
-          });
+    if (keyword === "unserved" && geo["properties"].served === "false") {
+      return true;
+    }
 
-          // Change the cursor to a pointer when the mouse is over the states layer.
-          map.on("mouseenter", "communities", function () {
-            map.getCanvas().style.cursor = "pointer";
-          });
+    if (
+      keyword === "Fully Electrified" &&
+      geo["properties"].electrified === "Fully Electrified"
+    ) {
+      return true;
+    }
 
-          // Change it back to a pointer when it leaves.
-          map.on("mouseleave", "communities", function () {
-            map.getCanvas().style.cursor = "";
-          });
+    if (
+      keyword === "Partially Electrified" &&
+      geo["properties"].electrified === "Partially Electrified"
+    ) {
+      return true;
+    }
 
-          // //test
-          // map.addSource("maine", {
-          //   type: "geojson",
-          //   data: {
-          //     type: "Feature",
-          //     geometry: {
-          //       type: "Polygon",
-          //       coordinates: [
-          //         [
-          //           [-67.13734351262877, 45.137451890638886],
-          //           [-66.96466, 44.8097],
-          //           [-68.03252, 44.3252],
-          //           [-69.06, 43.98],
-          //           [-70.11617, 43.68405],
-          //           [-70.64573401557249, 43.090083319667144],
-          //           [-70.75102474636725, 43.08003225358635],
-          //           [-70.79761105007827, 43.21973948828747],
-          //           [-70.98176001655037, 43.36789581966826],
-          //           [-70.94416541205806, 43.46633942318431],
-          //           [-71.08482, 45.3052400000002],
-          //           [-70.6600225491012, 45.46022288673396],
-          //           [-70.30495378282376, 45.914794623389355],
-          //           [-70.00014034695016, 46.69317088478567],
-          //           [-69.23708614772835, 47.44777598732787],
-          //           [-68.90478084987546, 47.184794623394396],
-          //           [-68.23430497910454, 47.35462921812177],
-          //           [-67.79035274928509, 47.066248887716995],
-          //           [-67.79141211614706, 45.702585354182816],
-          //           [-67.13734351262877, 45.137451890638886],
-          //         ],
-          //       ],
-          //     },
-          //   },
-          // });
-          // map.addLayer({
-          //   id: "maine",
-          //   type: "fill",
-          //   source: "maine",
-          //   layout: {},
-          //   paint: {
-          //     "fill-color": "#088",
-          //     "fill-opacity": 0.8,
-          //   },
-          // });
-        }
-      );
+    if (
+      keyword === "Not Electrified" &&
+      geo["properties"].electrified === "Not Electrified"
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // filter slum database with different keyword, and return an intersection
+  filterGeojson(keywords) {
+    let features = this.geoData.features;
+    const result = keywords.map((keyword) => {
+      return features.filter((geo) => this.filterHelper(keyword, geo));
     });
+
+    const reducer = (curr, newVal) => {
+      if (curr.length === 0) {
+        curr = newVal;
+      } else {
+        const intersection = curr.filter((x) => newVal.includes(x));
+        curr = intersection;
+      }
+      return curr;
+    };
+    const intersection = result.reduce(reducer, []);
+    return intersection;
   }
 
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar filterFunc={this.showFilteredslum} />
         <div
           className="sidebarStyle"
           style={{

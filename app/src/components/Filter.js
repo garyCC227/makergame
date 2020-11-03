@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "assets/styles/Filter.module.css";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -8,248 +8,267 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Switch from "@material-ui/core/Switch";
 import { withStyles } from "@material-ui/core/styles";
-import {
-  teal,
-  red,
-  lightBlue,
-  lime,
-  deepOrange,
-  orange,
-  brown,
-} from "@material-ui/core/colors";
+import Checkbox from "@material-ui/core/Checkbox";
+import Collapse from "@material-ui/core/Collapse";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import DraftsIcon from "@material-ui/icons/Drafts";
+import SendIcon from "@material-ui/icons/Send";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import StarBorder from "@material-ui/icons/StarBorder";
+import { makeStyles } from "@material-ui/core/styles";
+import FlashOnIcon from '@material-ui/icons/FlashOn';
+import CheckIcon from '@material-ui/icons/Check';
+import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 
-const TealSwitch = withStyles({
-  switchBase: {
-    color: teal[0],
-    "&$checked": {
-      color: teal[500],
-    },
-    "&$checked + $track": {
-      backgroundColor: teal[500],
-    },
-  },
-  checked: {},
-  track: {},
-})(Switch);
 
-const RedSwitch = withStyles({
-  switchBase: {
-    color: red[0],
-    "&$checked": {
-      color: red[500],
-    },
-    "&$checked + $track": {
-      backgroundColor: red[500],
-    },
-  },
-  checked: {},
-  track: {},
-})(Switch);
 
-const LightBlueSwitch = withStyles({
-  switchBase: {
-    color: lightBlue[0],
-    "&$checked": {
-      color: lightBlue[500],
-    },
-    "&$checked + $track": {
-      backgroundColor: lightBlue[500],
-    },
-  },
-  checked: {},
-  track: {},
-})(Switch);
+const useStyles = makeStyles(theme => ({
+	root: {
+		width: "100%",
+		maxWidth: 360,
+		backgroundColor: theme.palette.background.paper
+	},
+	nested: {
+		paddingLeft: theme.spacing(4)
+	}
+}));
 
-const LimeSwitch = withStyles({
-  switchBase: {
-    color: lime[0],
-    "&$checked": {
-      color: lime[500],
-    },
-    "&$checked + $track": {
-      backgroundColor: lime[500],
-    },
-  },
-  checked: {},
-  track: {},
-})(Switch);
+export default function Filter({ display, filterFunc }) {
+	const [checked, setChecked] = useState([]);
+	const classes = useStyles();
+  const [filterOpen, setOpen] = React.useState({
+    serve:false,
+    elec:false,
+    verified:false
+  });
 
-const DeepOrangeSwitch = withStyles({
-  switchBase: {
-    color: deepOrange[0],
-    "&$checked": {
-      color: deepOrange[500],
-    },
-    "&$checked + $track": {
-      backgroundColor: deepOrange[500],
-    },
-  },
-  checked: {},
-  track: {},
-})(Switch);
+	const filterCheck = (newChecked, value) => {
+		//for verified
+		if (value === "verified" && checked.indexOf("unverified") !== -1) {
+			const currentIndex = checked.indexOf("unverified");
+			newChecked.splice(currentIndex, 1);
+		}
 
-const OrangeSwitch = withStyles({
-  switchBase: {
-    color: orange[0],
-    "&$checked": {
-      color: orange[500],
-    },
-    "&$checked + $track": {
-      backgroundColor: orange[500],
-    },
-  },
-  checked: {},
-  track: {},
-})(Switch);
+		//unverified
+		if (value === "unverified" && checked.indexOf("verified") !== -1) {
+			const currentIndex = checked.indexOf("verified");
+			newChecked.splice(currentIndex, 1);
+		}
 
-const BrownSwitch = withStyles({
-  switchBase: {
-    color: brown[0],
-    "&$checked": {
-      color: brown[500],
-    },
-    "&$checked + $track": {
-      backgroundColor: brown[500],
-    },
-  },
-  checked: {},
-  track: {},
-})(Switch);
+		//serve
+		if (value === "serve" && checked.indexOf("unserve") !== -1) {
+			const currentIndex = checked.indexOf("unserve");
+			newChecked.splice(currentIndex, 1);
+		}
 
-export default function Filter({ display }) {
-  const [checked, setChecked] = useState([]);
+		//unserve
+		if (value === "unserve" && checked.indexOf("serve") !== -1) {
+			const currentIndex = checked.indexOf("serve");
+			newChecked.splice(currentIndex, 1);
+		}
 
-  const handleToggle = (value) => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+		//fully electirfied
+		if (value === "Fully Electrified") {
+			if (checked.indexOf("Partially Electrified") !== -1) {
+				const currentIndex = checked.indexOf("Partially Electrified");
+				newChecked.splice(currentIndex, 1);
+			}
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
+			if (checked.indexOf("Not Electrified") !== -1) {
+				const currentIndex = checked.indexOf("Not Electrified");
+				newChecked.splice(currentIndex, 1);
+			}
+		}
 
-    console.log(checked);
-    setChecked(newChecked);
-  };
+		//partially electrified
+		if (value === "Partially Electrified") {
+			if (checked.indexOf("Fully Electrified") !== -1) {
+				const currentIndex = checked.indexOf("Fully Electrified");
+				newChecked.splice(currentIndex, 1);
+			}
 
-  return (
-    <div className={style.filter} style={{ display: display }}>
-      <List subheader={<ListSubheader>Filter</ListSubheader>}>
-        {/* Verified */}
-        <ListItem>
-          <ListItemIcon>
-            <i className="fas fa-circle"></i>
-          </ListItemIcon>
-          <ListItemText id="switch-list-label-verified" primary="Verified" />
-          <ListItemSecondaryAction>
-            <TealSwitch
-              edge="end"
-              onChange={() => handleToggle("verified")}
-              checked={checked.indexOf("verified") !== -1}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
-        {/* Unverified */}
-        <ListItem>
-          <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: red[500] }}></i> */}
-          </ListItemIcon>
-          <ListItemText
-            id="switch-list-label-unverified"
-            primary="Unverified"
-          />
-          <ListItemSecondaryAction>
-            <RedSwitch
-              edge="end"
-              onChange={() => handleToggle("unverified")}
-              checked={checked.indexOf("unverified") !== -1}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
+			if (checked.indexOf("Not Electrified") !== -1) {
+				const currentIndex = checked.indexOf("Not Electrified");
+				newChecked.splice(currentIndex, 1);
+			}
+		}
 
-        {/* Served */}
-        <ListItem>
-          <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: lightBlue[500] }}></i> */}
-          </ListItemIcon>
-          <ListItemText id="switch-list-label-served" primary="Served" />
-          <ListItemSecondaryAction>
-            <LightBlueSwitch
-              edge="end"
-              onChange={() => handleToggle("served")}
-              checked={checked.indexOf("served") !== -1}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
-        {/* Unserved */}
-        <ListItem>
-          <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: lime[500] }}></i> */}
-          </ListItemIcon>
-          <ListItemText id="switch-list-label-unserved" primary="Unserved" />
-          <ListItemSecondaryAction>
-            <LimeSwitch
-              edge="end"
-              onChange={() => handleToggle("unserved")}
-              checked={checked.indexOf("unserved") !== -1}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
-        {/* Fully Electrified */}
-        <ListItem>
-          <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: deepOrange[500] }}></i> */}
-          </ListItemIcon>
-          <ListItemText
-            id="switch-list-label-fullelectrified"
-            primary="Fully Electrified"
-          />
-          <ListItemSecondaryAction>
-            <DeepOrangeSwitch
-              edge="end"
-              onChange={() => handleToggle("fullelectrified")}
-              checked={checked.indexOf("fullelectrified") !== -1}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
+		//not eletrified
+		if (value === "Not Electrified") {
+			if (checked.indexOf("Partially Electrified") !== -1) {
+				const currentIndex = checked.indexOf("Partially Electrified");
+				newChecked.splice(currentIndex, 1);
+			}
 
-        {/* Partially Electrified */}
-        <ListItem>
-          <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: orange[500] }}></i> */}
-          </ListItemIcon>
-          <ListItemText
-            id="switch-list-label-partelectrified"
-            primary="Partially Electrified"
-          />
-          <ListItemSecondaryAction>
-            <OrangeSwitch
-              edge="end"
-              onChange={() => handleToggle("partelectrified")}
-              checked={checked.indexOf("partelectrified") !== -1}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
+			if (checked.indexOf("Fully Electrified") !== -1) {
+				const currentIndex = checked.indexOf("Fully Electrified");
+				newChecked.splice(currentIndex, 1);
+			}
+		}
+	};
 
-        {/* Not Electrified */}
-        <ListItem>
-          <ListItemIcon>
-            {/* <i className="fas fa-circle" style={{ color: brown[500] }}></i> */}
-          </ListItemIcon>
-          <ListItemText
-            id="switch-list-label-noelectrified"
-            primary="Not Electrified"
-          />
-          <ListItemSecondaryAction>
-            <BrownSwitch
-              edge="end"
-              onChange={() => handleToggle("noelectrified")}
-              checked={checked.indexOf("noelectrified") !== -1}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
-      </List>
-    </div>
-  );
+	const handleToggle = value => {
+		const currentIndex = checked.indexOf(value);
+		let newChecked = [...checked];
+
+		if (currentIndex === -1) {
+			newChecked.push(value);
+			filterCheck(newChecked, value);
+		} else {
+			newChecked.splice(currentIndex, 1);
+		}
+
+		setChecked(newChecked);
+	};
+
+	useEffect(() => {
+		filterFunc(checked);
+	}, [checked, filterFunc]);
+
+	const handleClick = (whichFilter) => {
+		setOpen(prevState => ({
+      ...prevState,
+      [whichFilter]:!prevState[whichFilter]
+    }));
+    console.log(whichFilter,filterOpen);
+    
+	};
+
+	return (
+		<div className={style.filter} style={{ display: display }}>
+			<List subheader={<ListSubheader> Filter </ListSubheader>}>
+				<ListItem button onClick={()=>handleClick('verified')}>
+					<ListItemIcon>
+						<CheckIcon />
+					</ListItemIcon>
+					<ListItemText primary="Verified" />
+					{filterOpen.verified ? <ExpandLess /> : <ExpandMore />}
+				</ListItem>
+				<Collapse in={filterOpen.verified} timeout="auto" unmountOnExit>
+					<List component="div" disablePadding>
+
+						{/* Verified */}
+						<ListItem button className={classes.nested}>
+							<ListItemIcon>
+								<Checkbox
+									size="medium"
+									onChange={() => handleToggle("verified")}
+									checked={checked.indexOf("verified") !== -1}
+								/>
+							</ListItemIcon>
+							<ListItemText
+								id="switch-list-label-verified"
+								primary="Verified"
+							/>
+						</ListItem>
+
+						{/* Unverified */}
+						<ListItem button className={classes.nested}>
+							<ListItemIcon>
+								<Checkbox
+									size="medium"
+									onChange={() => handleToggle("unverified")}
+									checked={checked.indexOf("unverified") !== -1}
+								/>
+							</ListItemIcon>
+							<ListItemText
+								id="switch-list-label-unverified"
+								primary="Unverified"
+							/>
+						</ListItem>
+					</List>
+				</Collapse>
+                              {/* serve by Pollinate section */}
+        <ListItem button onClick={()=>handleClick('serve')}>
+					<ListItemIcon>
+						<RecordVoiceOverIcon />
+					</ListItemIcon>
+					<ListItemText primary="Serve by Pollinate" />
+					{filterOpen.serve ? <ExpandLess /> : <ExpandMore />}
+				</ListItem>
+				<Collapse in={filterOpen.serve} timeout="auto" unmountOnExit>
+					<List component="div" disablePadding>
+            {/* serve */}
+				<ListItem button className={classes.nested}>
+					<ListItemIcon>
+						<Checkbox
+							size="medium"
+							onChange={() => handleToggle("serve")}
+							checked={checked.indexOf("serve") !== -1}
+						/>
+					</ListItemIcon>
+					<ListItemText id="switch-list-label-serve" primary="Serve" />
+				</ListItem>
+				{/* Unserve */}
+				<ListItem button className={classes.nested}>
+					<ListItemIcon>
+						<Checkbox
+							size="medium"
+							onChange={() => handleToggle("unserve")}
+							checked={checked.indexOf("unserve") !== -1}
+						/>
+					</ListItemIcon>
+					<ListItemText id="switch-list-label-unserve" primary="Unserve" />
+				</ListItem>
+					</List>
+				</Collapse>
+
+				<ListItem button onClick={()=>handleClick('elec')}>
+					<ListItemIcon>
+						<FlashOnIcon />
+					</ListItemIcon>
+					<ListItemText primary="Electrified" />
+					{filterOpen.elec ? <ExpandLess /> : <ExpandMore />}
+				</ListItem>
+				<Collapse in={filterOpen.elec} timeout="auto" unmountOnExit>
+					<List component="div" disablePadding>
+            {/* Fully Electrified */}
+				<ListItem button className={classes.nested}>
+					<ListItemIcon>
+						<Checkbox
+							size="medium"
+							onChange={() => handleToggle("Fully Electrified")}
+							checked={checked.indexOf("Fully Electrified") !== -1}
+						/>
+					</ListItemIcon>
+					<ListItemText
+						id="switch-list-label-fullelectrified"
+						primary="Fully Electrified"
+					/>
+				</ListItem>
+				{/* Partially Electrified */}
+				<ListItem button className={classes.nested}>
+					<ListItemIcon>
+						<Checkbox
+							size="medium"
+							onChange={() => handleToggle("Partially Electrified")}
+							checked={checked.indexOf("Partially Electrified") !== -1}
+						/>
+					</ListItemIcon>
+					<ListItemText
+						id="switch-list-label-partelectrified"
+						primary="Partially Electrified"
+					/>
+				</ListItem>
+				{/* Not Electrified */}
+				<ListItem button className={classes.nested}>
+					<ListItemIcon>
+						<Checkbox
+							size="medium"
+							onChange={() => handleToggle("Not Electrified")}
+							checked={checked.indexOf("Not Electrified") !== -1}
+						/>
+					</ListItemIcon>
+					<ListItemText
+						id="switch-list-label-noelectrified"
+						primary="Not Electrified"
+					/>
+				</ListItem>
+					</List>
+				</Collapse>
+				
+			</List>
+		</div>
+	);
 }

@@ -17,10 +17,15 @@
   align-items: center;
   z-index: 10;
   position: relative;
-  margin: 10px 0;
+  margin: 10px auto;
 }
 
 .input {
   width: 220px !important;
   border: none;
+}
+
+.filterIcon {
+  width: 25px;
+  height: auto;
 }

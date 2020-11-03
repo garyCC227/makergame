@@ -33,17 +33,6 @@ function SideBar(props) {
               />
             </Link>
           </li>
-          <li>
-            <Link to="/">
-              {/* TODO */}
-              <img
-                className={style.navIcon}
-                data-tip="Community <br />Summary"
-                src={statIcon}
-                alt="statPage Icon"
-              />
-            </Link>
-          </li>
         </ul>
       </div>
       <ReactTooltip multiline={true} />
