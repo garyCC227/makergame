@@ -43,7 +43,7 @@ def main():
         data = json.load(f)
 
     for row in data['allCoordinates']:
-        print("working")
+        print(row['image_id'])
         ID = row['image_id']
         lat = row['center']['lat']
         longi = row['center']['long']
