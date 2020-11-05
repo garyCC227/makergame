@@ -6,16 +6,15 @@ import io
 import os
 
 
-# 1. to label and push more images. (50/50 ratio for positive/negatives)
-# 2. to download images from mapbox using center point of each of the image.
-# 3. Naming convention to cross reference.
-
-
 if not os.path.exists('RawAndMasks'):
     os.makedirs('RawAndMasks')
 
 with open('LabelExport.json') as f:
   data = json.load(f)
+
+
+print(len(data));
+
 
 
 def save_image(ID, res):
@@ -27,6 +26,27 @@ def save_image(ID, res):
 
 
 # add the negative samples here.. Check what ratio is needed.
+
+count=0;
+
+for i in range(len(data)):
+
+	if (count == 306):
+		break;
+
+	if 'objects' in data[i]['Label']:
+		continue;
+
+	
+	id2 = data[i]['ID']+"_negative";
+	Raw = data[i]['Labeled Data'];
+	res1 = requests.get(Raw);
+	save_image(id2, res1);
+	count = count + 1;
+	print(str(i)+ " negative samples - complete.");
+
+
+
 for i in range(len(data)):
 
 	if 'objects' in data[i]['Label']:
